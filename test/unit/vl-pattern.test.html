@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../web-component-tester/browser.js"></script>
+  <script src="/node_modules/sinon/pkg/sinon.js"></script>
+
+  <script type="module" src="../../src/vl-pattern.js"></script>
+</head>
+
+<body>
+  <script type="module">
+    import {vlPattern} from '../../src/vl-pattern.js';
+
+    suite('vl-pattern', () => {
+      const sandbox = sinon.createSandbox();
+    
+      teardown(() => {
+        sandbox.restore();
+      });
+
+      test('een class die de pattern mixin toepast heeft een dress functie om de input pattern te activeren', () => {
+        const object = {};
+        assert.isUndefined(object.dress);
+        Object.assign(object, vlPattern);
+        assert.isDefined(object.dress);
+      });
+
+      test('de dress functie zal alleen de input pattern activeren als het data-vl-pattern gedefinieerd is', () => {
+        sandbox.spy(window.vl.pattern, 'dress');
+        const object = {};
+        Object.assign(object, vlPattern);
+        const element = document.createElement('div');
+        object.dress(element);
+        assert(window.vl.pattern.dress.notCalled);
+        element.setAttribute('data-vl-pattern', '');
+        object.dress(element);
+        assert(window.vl.pattern.dress.notCalled);
+        element.setAttribute('data-vl-pattern', 'iban');
+        object.dress(element);
+        assert(window.vl.pattern.dress.calledWith(element));
+      });
+    });
+  </script>
+</body>
+
+</html>
