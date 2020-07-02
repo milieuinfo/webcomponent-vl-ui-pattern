@@ -20,7 +20,7 @@ export const vlPattern = {
    *
    * @return {Promise}
    */
-  awaitUntilReady() {
+  ready() {
     return awaitUntil(() => window.vl && window.vl.pattern);
   },
 
