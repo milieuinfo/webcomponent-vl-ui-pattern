@@ -10,6 +10,8 @@ describe('vl-pattern', async () => {
 
   it('als gebruiker kan ik alleen een toegelaten IBAN patroon invullen', async () => {
     const input = await vlPatternPage.getIBANInput();
+    await input.setValue('dit is geen IBAN nummer');
+    await assert.eventually.equal(input.getValue(), 'BE');
     await input.setValue('BE46 4566 1131 4336');
     await assert.eventually.equal(input.getValue(), 'BE46 4566 1131 4336');
     await input.setValue('BE46456611314336');
@@ -25,6 +27,8 @@ describe('vl-pattern', async () => {
 
   it('als gebruiker kan ik alleen een toegelaten telefoonnummer patroon invullen', async () => {
     const input = await vlPatternPage.getPhoneInput();
+    await input.setValue('dit is geen telefoonnummer');
+    await assert.eventually.equal(input.getValue(), '+32');
     await input.setValue('02 553 80 11');
     await assert.eventually.equal(input.getValue(), '+32 2 553 80 11');
     await input.setValue('025538011');
@@ -40,6 +44,8 @@ describe('vl-pattern', async () => {
 
   it('als gebruiker kan ik alleen een toegelaten datum patroon invullen', async () => {
     const input = await vlPatternPage.getDateInput();
+    await input.setValue('dit is geen datum');
+    await assert.eventually.equal(input.getValue(), '');
     await input.setValue('03.12.1988');
     await assert.eventually.equal(input.getValue(), '03.12.1988');
     await input.setValue('03121988');
@@ -54,6 +60,8 @@ describe('vl-pattern', async () => {
 
   it('als gebruiker kan ik alleen een toegelaten prijs patroon invullen', async () => {
     const input = await vlPatternPage.getPriceInput();
+    await input.setValue('dit is geen prijs');
+    await assert.eventually.equal(input.getValue(), '€');
     await input.setValue('1 000');
     await assert.eventually.equal(input.getValue(), '€1 000');
     await input.setValue('1000');
@@ -69,6 +77,8 @@ describe('vl-pattern', async () => {
 
   it('als gebruiker kan ik alleen een toegelaten rijksregisternummer patroon invullen', async () => {
     const input = await vlPatternPage.getRRNInput();
+    await input.setValue('dit is geen rrn');
+    await assert.eventually.equal(input.getValue(), '');
     await input.setValue('88.12.01-003.56');
     await assert.eventually.equal(input.getValue(), '88.12.01-003.56');
     await input.setValue('88120100356');
