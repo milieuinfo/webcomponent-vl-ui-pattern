@@ -16,6 +16,7 @@ describe('vl-pattern', async () => {
     await assert.eventually.equal(input.getValue(), 'BE46 4566 1131 4336');
     await input.setValue('BE46456611314336');
     await assert.eventually.equal(input.getValue(), 'BE46 4566 1131 4336');
+    await assert.eventually.equal(input.getValue(), 'BE46 4566 1131 4336');
     await assert.eventually.isTrue(input.hasIBANPattern());
     await assert.eventually.isFalse(input.hasPhonePattern());
     await assert.eventually.isFalse(input.hasDatePattern());
@@ -28,7 +29,7 @@ describe('vl-pattern', async () => {
   it('als gebruiker kan ik alleen een toegelaten telefoonnummer patroon invullen', async () => {
     const input = await vlPatternPage.getPhoneInput();
     await input.setValue('dit is geen telefoonnummer');
-    await assert.eventually.equal(input.getValue(), '+32');
+    await assert.eventually.equal(input.getValue(), '+32 ');
     await input.setValue('02 553 80 11');
     await assert.eventually.equal(input.getValue(), '+32 2 553 80 11');
     await input.setValue('025538011');
@@ -66,6 +67,8 @@ describe('vl-pattern', async () => {
     await assert.eventually.equal(input.getValue(), '€1 000');
     await input.setValue('1000');
     await assert.eventually.equal(input.getValue(), '€1 000');
+    await input.setValue('1,49');
+    await assert.eventually.equal(input.getValue(), '€1,49');
     await assert.eventually.isFalse(input.hasIBANPattern());
     await assert.eventually.isFalse(input.hasPhonePattern());
     await assert.eventually.isFalse(input.hasDatePattern());
