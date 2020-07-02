@@ -16,7 +16,6 @@ describe('vl-pattern', async () => {
     await assert.eventually.equal(input.getValue(), 'BE46 4566 1131 4336');
     await input.setValue('BE46456611314336');
     await assert.eventually.equal(input.getValue(), 'BE46 4566 1131 4336');
-    await assert.eventually.equal(input.getValue(), 'BE46 4566 1131 4336');
     await assert.eventually.isTrue(input.hasIBANPattern());
     await assert.eventually.isFalse(input.hasPhonePattern());
     await assert.eventually.isFalse(input.hasDatePattern());
