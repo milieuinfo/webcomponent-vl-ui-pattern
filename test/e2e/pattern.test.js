@@ -4,7 +4,7 @@ const VlPatternPage = require('./pages/vl-pattern.page');
 describe('vl-pattern', async () => {
   const vlPatternPage = new VlPatternPage(driver);
 
-  before(() => {
+  before(async () => {
     return vlPatternPage.load();
   });
 
