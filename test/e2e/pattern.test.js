@@ -1,10 +1,11 @@
-const {assert, driver} = require('vl-ui-core').Test.Setup;
+const {assert, getDriver} = require('vl-ui-core').Test.Setup;
 const VlPatternPage = require('./pages/vl-pattern.page');
 
 describe('vl-pattern', async () => {
-  const vlPatternPage = new VlPatternPage(driver);
+  let vlPatternPage;
 
   before(() => {
+    vlPatternPage = new VlPatternPage(getDriver());
     return vlPatternPage.load();
   });
 
