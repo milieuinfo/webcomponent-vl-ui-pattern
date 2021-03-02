@@ -14,6 +14,9 @@ const vlPattern = {
   async hasRRNPattern() {
     return this._hasPattern('rrn');
   },
+  async hasUuidPattern() {
+    return this._hasPattern('uuid');
+  },
   async hasPatternPrefix() {
     const prefix = await this.getAttribute('data-vl-pattern-prefix');
     return prefix != undefined;

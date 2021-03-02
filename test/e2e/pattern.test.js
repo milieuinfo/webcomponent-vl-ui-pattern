@@ -24,6 +24,7 @@ describe('vl-pattern', async () => {
     await assert.eventually.isFalse(input.hasRRNPattern());
     await assert.eventually.isTrue(input.hasPatternPrefix());
     await assert.eventually.equal(input.getPatternPrefix(), 'BE');
+    await assert.eventually.isFalse(input.hasUuidPattern());
   });
 
   it('als gebruiker kan ik alleen een toegelaten telefoonnummer patroon invullen', async () => {
@@ -41,6 +42,7 @@ describe('vl-pattern', async () => {
     await assert.eventually.isFalse(input.hasRRNPattern());
     await assert.eventually.isTrue(input.hasPatternPrefix());
     await assert.eventually.equal(input.getPatternPrefix(), '+32');
+    await assert.eventually.isFalse(input.hasUuidPattern());
   });
 
   it('als gebruiker kan ik alleen een toegelaten datum patroon invullen', async () => {
@@ -57,6 +59,7 @@ describe('vl-pattern', async () => {
     await assert.eventually.isFalse(input.hasPricePattern());
     await assert.eventually.isFalse(input.hasRRNPattern());
     await assert.eventually.isFalse(input.hasPatternPrefix());
+    await assert.eventually.isFalse(input.hasUuidPattern());
   });
 
   it('als gebruiker kan ik alleen een toegelaten prijs patroon invullen', async () => {
@@ -76,6 +79,7 @@ describe('vl-pattern', async () => {
     await assert.eventually.isFalse(input.hasRRNPattern());
     await assert.eventually.isTrue(input.hasPatternPrefix());
     await assert.eventually.equal(input.getPatternPrefix(), '€');
+    await assert.eventually.isFalse(input.hasUuidPattern());
   });
 
   it('als gebruiker kan ik alleen een toegelaten rijksregisternummer patroon invullen', async () => {
@@ -92,5 +96,25 @@ describe('vl-pattern', async () => {
     await assert.eventually.isFalse(input.hasPricePattern());
     await assert.eventually.isTrue(input.hasRRNPattern());
     await assert.eventually.isFalse(input.hasPatternPrefix());
+    await assert.eventually.isFalse(input.hasUuidPattern());
+  });
+
+  it('als gebruiker kan ik alleen een toegelaten uuid patroon invullen', async () => {
+    const input = await vlPatternPage.getUuidInput();
+    await input.setValue('---XYZ___');
+    await assert.eventually.equal(input.getValue(), '');
+    await input.setValue('ZZZZZZZZ-ZZZZ-ZZZZ-ZZZZ-ZZZZZZZZZZZZ');
+    await assert.eventually.equal(input.getValue(), '');
+    await input.setValue('1c6fa548-5eef-11eb-ae93-0242ac130002');
+    await assert.eventually.equal(input.getValue(), '1c6fa548-5eef-11eb-ae93-0242ac130002');
+    await input.setValue('1c6fa5485eef11ebae930242ac130002');
+    await assert.eventually.equal(input.getValue(), '1c6fa548-5eef-11eb-ae93-0242ac130002');
+    await assert.eventually.isFalse(input.hasIBANPattern());
+    await assert.eventually.isFalse(input.hasPhonePattern());
+    await assert.eventually.isFalse(input.hasDatePattern());
+    await assert.eventually.isFalse(input.hasPricePattern());
+    await assert.eventually.isFalse(input.hasRRNPattern());
+    await assert.eventually.isFalse(input.hasPatternPrefix());
+    await assert.eventually.isTrue(input.hasUuidPattern());
   });
 });

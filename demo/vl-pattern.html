@@ -2,12 +2,13 @@
 <html>
 	<head>
         <title>vl-pattern voorbeeld</title>
+
+        <script type="module" src="/src/vl-pattern.js"></script>
+
         <script type="module" src="/node_modules/vl-ui-demo/dist/vl-demo-all.js"></script>
         <script type="module" src="/node_modules/vl-ui-body/dist/vl-body.js"></script>
         <script type="module" src="/node_modules/vl-ui-form-message/dist/vl-form-message.js"></script>
         <script type="module" src="/node_modules/vl-ui-input-field/dist/vl-input-field.js"></script>
-
-        <script type="module" src="/src/vl-pattern.js"></script>
 
         <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-body/dist/style.css" />
         <link rel="stylesheet" type="text/css" href="/node_modules/vl-ui-demo/dist/style.css" />
@@ -40,6 +41,11 @@
             <vl-demo data-vl-title="RRN validation">
                 <label is="vl-form-label" for="pattern-5">Rijksregisternummer</label>
                 <input is="vl-input-field" data-vl-block type="text" id="pattern-rrn" name="pattern-5" value="" placeholder="11.22.33-444.55" data-vl-pattern="rrn" data-vl-js-dress="true" />
+            </vl-demo>
+
+            <vl-demo data-vl-title="UUID validation">
+                <label is="vl-form-label" for="pattern-6">UUID</label>
+                <input is="vl-input-field" data-vl-block type="text" id="pattern-uuid" name="pattern-6" value="" placeholder="1c6fa548-5eef-11eb-ae93-0242ac130002" data-vl-pattern="uuid" />
             </vl-demo>
         </vl-demo-page>
     </body>
