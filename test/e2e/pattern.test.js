@@ -109,12 +109,6 @@ describe('vl-pattern', async () => {
     await assert.eventually.equal(input.getValue(), '1c6fa548-5eef-11eb-ae93-0242ac130002');
     await input.setValue('1c6fa5485eef11ebae930242ac130002');
     await assert.eventually.equal(input.getValue(), '1c6fa548-5eef-11eb-ae93-0242ac130002');
-    await assert.eventually.isFalse(input.hasIBANPattern());
-    await assert.eventually.isFalse(input.hasPhonePattern());
-    await assert.eventually.isFalse(input.hasDatePattern());
-    await assert.eventually.isFalse(input.hasPricePattern());
-    await assert.eventually.isFalse(input.hasRRNPattern());
-    await assert.eventually.isFalse(input.hasPatternPrefix());
     await assert.eventually.isTrue(input.hasUuidPattern());
   });
 });
