@@ -23,6 +23,10 @@ class VlPatternPage extends Page {
     return this._getInput('rrn');
   }
 
+  async getUuidInput() {
+    return this._getInput('uuid');
+  }
+
   async load() {
     await super.load(`${Config.baseUrl}/demo/vl-pattern.html`);
   }
