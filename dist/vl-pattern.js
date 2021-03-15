@@ -7,8 +7,9 @@ import '/node_modules/vl-ui-pattern/lib/pattern.js';
  * Gebruik de pattern mixin in combinatie met een input field om de gebruiker te verplichten om informatie in een bepaald formaat op te geven.
  * @mixin vlPattern
  *
- * @property {(iban | phone | date | price | rrn | uuid)} data-vl-pattern - Attribuut wordt gebruikt om aan te duiden welk patroon van toepassing is.
+ * @property {(iban | phone | date | price | rrn | uuid | numerical)} data-vl-pattern - Attribuut wordt gebruikt om aan te duiden welk patroon van toepassing is.
  * @property {string} data-vl-pattern-prefix - Attribuut bepaalt de prefix die de gebruiker zal zien. In het geval van iban en phone pattern type wordt de prefix toegevoegd aan de value. Bij price pattern type is de prefix puur visueel.
+ * @property {number} [2] data-vl-numerical-decimal-scale - Attribuut bepaalt hoeveel getallen er achter de komma ingevoerd kunnen worden.
  *
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-pattern/releases/latest|Release notes}
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-pattern/issues|Issues}
