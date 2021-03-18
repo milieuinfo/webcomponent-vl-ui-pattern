@@ -115,7 +115,7 @@ describe('vl-pattern', async () => {
   it('als gebruiker kan ik alleen een numeriek patroon invullen', async () => {
     const input = await vlPatternPage.getNumericalInput();
     await assert.eventually.isTrue(input.hasNumericalPattern());
-    await assert.eventually.equal(input.getNumericalDecimalScale(), "4");
+    await assert.eventually.equal(input.getNumericalDecimalScale(), '4');
 
     await input.setValue('foobar');
     await assert.eventually.equal(input.getValue(), '');
