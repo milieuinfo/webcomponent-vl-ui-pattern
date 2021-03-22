@@ -8,9 +8,16 @@
   <script src="/node_modules/sinon/pkg/sinon.js"></script>
 
   <script type="module" src="../../src/vl-pattern.js"></script>
+  <script type="module" src="../../demo/vl-input-field-demo.js"></script>
 </head>
 
 <body>
+  <test-fixture id="vl-pattern-fixture">
+    <template>
+      <input is="vl-input-field-demo" id="pattern-numerical" name="pattern-numerical" value="" placeholder="12,45" data-vl-pattern="numerical" data-vl-numerical-decimal-scale="4" />
+    </template>
+  </test-fixture>
+
   <script type="module">
     import {vlPattern} from '../../src/vl-pattern.js';
 
@@ -41,6 +48,15 @@
         element.setAttribute('data-vl-pattern', 'iban');
         object.dress(element);
         assert(window.vl.pattern.dress.calledWith(element));
+      });
+
+      test('kan de raw value opvragen', () => {
+        const inputField = fixture('vl-pattern-fixture');
+        assert.equal(inputField.getRawValue(), '');
+        inputField.value = '1234'; 
+        inputField.dispatchEvent(new Event('input'));
+        assert.equal(inputField.getRawValue(), '1234');
+        assert.equal(inputField.value, '1 234');
       });
     });
   </script>
