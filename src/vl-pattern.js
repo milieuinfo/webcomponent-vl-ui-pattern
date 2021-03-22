@@ -26,9 +26,13 @@ export const vlPattern = {
   },
 
   getRawValue() {
-    const allPatternInstancesOnPage = vl.pattern.patternInstances;
-    const patternInstanceForThisElement = allPatternInstancesOnPage.find((patternInstance) => patternInstance.element == this);
-    return patternInstanceForThisElement.instance.getRawValue();
+    const patternInstanceForThisElement = vl.pattern.patternInstances.find((patternInstance) => patternInstance.element == this);
+    if (patternInstanceForThisElement) {
+      return patternInstanceForThisElement.instance.getRawValue();
+    } else {
+      console.log('Pattern instance for ' + this + ' not found');
+      return undefined;
+    }
   },
 
   /**

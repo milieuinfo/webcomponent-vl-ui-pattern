@@ -26,6 +26,7 @@ export const vlPattern = {
   },
 
   getRawValue() {
+<<<<<<< HEAD
     const patternInstanceForThisElement = vl.pattern.patternInstances.find((patternInstance) => patternInstance.element == this);
     if (patternInstanceForThisElement) {
       return patternInstanceForThisElement.instance.getRawValue();
@@ -33,6 +34,11 @@ export const vlPattern = {
       console.log('Pattern instance for ' + this + ' not found');
       return undefined;
     }
+=======
+    const allPatternInstancesOnPage = vl.pattern.patternInstances;
+    const patternInstanceForThisElement = allPatternInstancesOnPage.find((patternInstance) => patternInstance.element == this);
+    return patternInstanceForThisElement.instance.getRawValue();
+>>>>>>> 2fc9cf30a9e59657979b53af1b66ae6159666d9b
   },
 
   /**
