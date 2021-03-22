@@ -26,8 +26,8 @@ export const vlPattern = {
   },
   
   getRawValue() {
-	const allPatternInstanceOnPage = vl.pattern.patternInstances;
-	const patternInstanceForThisElement = allPatternInstanceOnPage.find(patternInstance => patternInstance.element == this);
+	const allPatternInstancesOnPage = vl.pattern.patternInstances;
+	const patternInstanceForThisElement = allPatternInstancesOnPage.find(patternInstance => patternInstance.element == this);
 	return patternInstanceForThisElement.instance.getRawValue();
   },
 
