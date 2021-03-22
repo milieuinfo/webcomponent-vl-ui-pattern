@@ -24,6 +24,12 @@ export const vlPattern = {
   ready() {
     return awaitUntil(() => window.vl && window.vl.pattern);
   },
+  
+  getRawValue() {
+	const allPatternInstanceOnPage = vl.pattern.patternInstances;
+	const patternInstanceForThisElement = allPatternInstanceOnPage.find(patternInstance => patternInstance.element == this);
+	return patternInstanceForThisElement.instance.getRawValue();
+  },
 
   /**
    * Initialiseer de pattern.
