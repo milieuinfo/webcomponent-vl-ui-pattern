@@ -53,7 +53,7 @@
       test('kan de raw value opvragen', () => {
         const inputField = fixture('vl-pattern-fixture');
         assert.equal(inputField.getRawValue(), '');
-        inputField.value = '1234'; 
+        inputField.value = '1234';
         inputField.dispatchEvent(new Event('input'));
         assert.equal(inputField.getRawValue(), '1234');
         assert.equal(inputField.value, '1 234');
