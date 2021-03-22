@@ -24,11 +24,11 @@ export const vlPattern = {
   ready() {
     return awaitUntil(() => window.vl && window.vl.pattern);
   },
-  
+
   getRawValue() {
-	const allPatternInstancesOnPage = vl.pattern.patternInstances;
-	const patternInstanceForThisElement = allPatternInstancesOnPage.find(patternInstance => patternInstance.element == this);
-	return patternInstanceForThisElement.instance.getRawValue();
+    const allPatternInstancesOnPage = vl.pattern.patternInstances;
+    const patternInstanceForThisElement = allPatternInstancesOnPage.find((patternInstance) => patternInstance.element == this);
+    return patternInstanceForThisElement.instance.getRawValue();
   },
 
   /**

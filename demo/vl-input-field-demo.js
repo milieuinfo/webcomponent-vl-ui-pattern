@@ -6,8 +6,8 @@ Promise.all([
 
 export class VlInputFieldDemo extends nativeVlElement(HTMLInputElement) {
   connectedCallback() {
-	this.classList.add('vl-input-field');
-	this._dress();
+    this.classList.add('vl-input-field');
+    this._dress();
   }
 
   static get _observedChildClassAttributes() {
