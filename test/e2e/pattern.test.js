@@ -111,4 +111,21 @@ describe('vl-pattern', async () => {
     await assert.eventually.equal(input.getValue(), '1c6fa548-5eef-11eb-ae93-0242ac130002');
     await assert.eventually.isTrue(input.hasUuidPattern());
   });
+
+  it('als gebruiker kan ik alleen een numeriek patroon invullen', async () => {
+    const input = await vlPatternPage.getNumericalInput();
+    await assert.eventually.isTrue(input.hasNumericalPattern());
+    await assert.eventually.equal(input.getNumericalDecimalScale(), '4');
+
+    await input.setValue('foobar');
+    await assert.eventually.equal(input.getValue(), '');
+    await input.setValue('123foobar');
+    await assert.eventually.equal(input.getValue(), '123');
+    await input.setValue('1234567,8901');
+    await assert.eventually.equal(input.getValue(), '1 234 567,8901');
+    await input.setValue('-1234567,8901');
+    await assert.eventually.equal(input.getValue(), '-1 234 567,8901');
+    await input.setValue('1234567,89012');
+    await assert.eventually.equal(input.getValue(), '1 234 567,8901');
+  });
 });
