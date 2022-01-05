@@ -37,7 +37,7 @@
 		"demo": "http-server"
 	},
 	"dependencies": {
-		"@govflanders/vl-ui-pattern": "^3.12.3",
+		"@govflanders/vl-ui-pattern": "^10.0.0",
 		"vl-ui-core": "^7.1.1"
 	},
 	"peerDependencies": {
